@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TLE Parts Assistant</title>
-    <link rel="stylesheet" href="authuser.css">
+    <!-- <link rel="stylesheet" href="authuser.css"> -->
+    <link rel="stylesheet" href="a.css">
 </head>
 
 <body>
@@ -27,13 +28,16 @@
         </ul>
     </header>
     <main>
-        <span class="span-1">Parts Finder</span>
-        <span class="span-2">Sales Assistant</span>
+        <div class="spans">
+            <span class="span-1">Parts Finder</span>
+            <span class="span-2">Sales Assistant</span>
+
+        </div>
         <section class="tool-1">
-            <p>Search for a part by name or part id</p>
             <form class="manu-id">
+                <p>Search for a part by manufacturer and part id</p>
                 <p>• FIND PART NUMBER</p>
-                <span>search part name</span>
+                <span style="padding: 2px 4px;color: #00e5ff; font-weight: bolder; border: 1px solid silver;border-radius: 999px">search part name</span>
                 <div class="form-grp" style="margin-top: 1em;">
                     <label for="manufacturer">
                         Manufacturer
@@ -51,8 +55,9 @@
             </form>
 
             <form class="part-name">
+                <p>Search for a part by name or description</p>
                 <p>• FIND PART NAME</p>
-                <span>search product number</span>
+                <span style="padding: 2px 4px;color: #00e5ff; font-weight: bolder; border: 1px solid silver;border-radius: 999px;">search product number</span>
                 <div class="form-grp" style="margin-top: 1em;">
                     <label for="part-name">
                         Part Name
@@ -66,7 +71,7 @@
 
         <section class="tool-2">
             <form class="sales-assistant">
-                <p>Find top five buiding site that have a high probablity of purchasing the below electrical parts.</p>
+                <p>Find top five buiding sites that have a high probablity of purchasing the below electrical parts.</p>
                 <div class="form-grp" style="margin-top: 1em;">
                     <label for="sales-name">
                         Part Name

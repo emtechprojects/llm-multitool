@@ -6,11 +6,11 @@ const goToUserSignup = document.querySelector('.login-form').querySelector('span
 const goToUserLogin = document.querySelector('.signup-form').querySelector('span')
 goToUserLogin.addEventListener('click', () => {
     userSignup.style.display = 'none'
-    userLogin.style.display = 'flex'
+    userLogin.style.display = 'block'
 })
 goToUserSignup.addEventListener('click', () => {
     userLogin.style.display = 'none'
-    userSignup.style.display = 'flex'
+    userSignup.style.display = 'block'
 })
 
 

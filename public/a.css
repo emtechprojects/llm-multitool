@@ -1,0 +1,613 @@
+/* =========================================================
+   ASSISTANT — TOOL INTERFACE
+   Dark Glass / Cyber UI
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #05070d;
+
+    --panel: rgba(13, 18, 29, 0.72);
+    --panel-hover: rgba(18, 25, 40, 0.8);
+
+    --border: rgba(255, 255, 255, 0.09);
+    --border-hover: rgba(0, 229, 255, 0.35);
+
+    --text: #f4f7fb;
+    --muted: #7e8799;
+
+    --cyan: #00e5ff;
+    --purple: #9b5cff;
+    --pink: #ff3cac;
+
+    --radius: 18px;
+}
+
+
+/* =========================================================
+      RESET
+      ========================================================= */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    padding: 2rem;
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    background:
+        radial-gradient(circle at 10% 10%,
+            rgba(0, 229, 255, 0.08),
+            transparent 30%),
+        radial-gradient(circle at 90% 90%,
+            rgba(155, 92, 255, 0.1),
+            transparent 30%),
+        var(--bg);
+}
+
+
+/* =========================================================
+      HEADER
+      ========================================================= */
+
+header {
+    width: min(1100px, 100%);
+    margin: 0 auto 2rem;
+
+    padding: 1.5rem;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    background: var(--panel);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+
+header h2 {
+    margin: 0 0 1rem;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+
+header>span {
+    display: inline-block;
+
+    margin-left: 0 !important;
+    margin-bottom: 1rem;
+
+    color: var(--cyan);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+      HEADER LIST
+      ========================================================= */
+
+header ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 1.5rem;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.li-grp {
+    flex: 1 1 300px;
+
+    padding: 1rem;
+
+    border-left: 2px solid rgba(0, 229, 255, 0.25);
+
+    background: rgba(255, 255, 255, 0.025);
+}
+
+
+.li-grp li {
+    margin: 0.45rem 0;
+
+    color: var(--muted);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+      MAIN
+      ========================================================= */
+
+main {
+    width: min(1100px, 100%);
+    margin: auto;
+    position: relative;
+}
+
+
+/* =========================================================
+      STATUS SPANS
+      ========================================================= */
+.spans {
+    min-height: 80px;
+    position: absolute;
+    top: -25px;
+    right: 3px;
+}
+
+.span-1,
+.span-2 {
+    margin-bottom: 1rem;
+    padding: 0.35rem 0.7rem;
+    display: inline-block;
+    color: var(--cyan);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+}
+
+
+.span-1 {
+    color: var(--cyan);
+    border: 2px solid rgba(0, 229, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(0, 229, 255, 0.05);
+}
+
+.span-2 {
+    color: var(--muted);
+}
+
+.part-name {
+    display: none;
+}
+
+
+/* =========================================================
+      TOOL GRID
+      ========================================================= */
+
+/* .tool-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1rem;
+} */
+
+
+.tool-1,
+.tool-2 {
+    margin-bottom: 1rem;
+}
+
+
+/* =========================================================
+      CARDS
+      ========================================================= */
+
+.tool-1 form,
+.sales-assistant {
+    position: relative;
+
+    padding: 1.5rem;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    background: var(--panel);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    transition:
+        border var(--transition, 0.3s ease),
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.tool-1 form:hover,
+.sales-assistant:hover {
+    border-color: var(--border-hover);
+
+    background: var(--panel-hover);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+      TOOL TITLES
+      ========================================================= */
+
+.tool-1 form>p,
+.sales-assistant>p {
+    margin-bottom: 0.8rem;
+
+    color: var(--text);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    letter-spacing: 0.05em;
+}
+
+
+.tool-1 form>span {
+    color: var(--muted);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+}
+
+
+/* =========================================================
+      FORM GROUP
+      ========================================================= */
+
+.form-grp {
+    margin-bottom: 1rem;
+}
+
+
+.form-grp label {
+    display: block;
+
+    margin-bottom: 0.45rem;
+
+    color: var(--muted);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+}
+
+
+/* =========================================================
+      INPUTS
+      ========================================================= */
+
+.form-grp input {
+    width: 100%;
+
+    padding: 0.8rem 0.9rem;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    outline: none;
+
+    color: var(--text);
+
+    background: rgba(0, 0, 0, 0.25);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+
+    transition:
+        border 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.form-grp input::placeholder {
+    color: #4e5769;
+}
+
+
+.form-grp input:focus {
+    border-color: var(--cyan);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 229, 255, 0.07),
+        0 0 18px rgba(0, 229, 255, 0.08);
+}
+
+
+/* =========================================================
+      BUTTONS
+      ========================================================= */
+
+#submit {
+    width: 100%;
+
+    padding: 0.8rem;
+
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    border-radius: 9px;
+
+    color: #001014;
+
+    background: linear-gradient(135deg,
+            var(--cyan),
+            #72f5ff);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+#submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 229, 255, 0.18);
+}
+
+
+/* =========================================================
+      SALES ASSISTANT
+      ========================================================= */
+
+.tool-2 {
+    display: none;
+}
+
+
+.sales-assistant {
+    width: 100%;
+}
+
+
+/* =========================================================
+      DIVIDER
+      ========================================================= */
+
+hr {
+    height: 1px;
+
+    margin: 2rem 0;
+
+    border: 0;
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 229, 255, 0.3),
+            rgba(155, 92, 255, 0.3),
+            transparent);
+}
+
+
+/* =========================================================
+      RESPONSE PANEL
+      ========================================================= */
+
+.response {
+    position: relative;
+
+    padding: 1.5rem;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    background: rgba(8, 12, 20, 0.8);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+
+.response>span:first-child {
+    display: inline-block;
+
+    margin-bottom: 1rem;
+
+    color: var(--cyan);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+      CLEAR BUTTON
+      ========================================================= */
+
+.clr-btn {
+    float: right;
+
+    padding: 0.35rem 0.7rem;
+
+    border: 1px solid rgba(255, 60, 172, 0.25);
+    border-radius: 999px;
+
+    color: #ff6abb;
+
+    background: rgba(255, 60, 172, 0.05);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.65rem;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+
+.clr-btn:hover {
+    background: rgba(255, 60, 172, 0.12);
+
+    box-shadow:
+        0 0 15px rgba(255, 60, 172, 0.12);
+}
+
+
+/* =========================================================
+      OUTPUT
+      ========================================================= */
+
+.output {
+    clear: both;
+}
+
+
+#output {
+    display: block;
+
+    width: 100%;
+    min-height: 220px;
+
+    margin-top: 0.5rem;
+
+    padding: 1rem;
+
+    resize: vertical;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+
+    outline: none;
+
+    color: #a9faff;
+
+    background:
+        linear-gradient(rgba(0, 229, 255, 0.015),
+            rgba(155, 92, 255, 0.015)),
+        #03050a;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    line-height: 1.7;
+
+    box-shadow:
+        inset 0 0 30px rgba(0, 0, 0, 0.4);
+
+    transition:
+        border 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+#output:focus {
+    border-color: rgba(0, 229, 255, 0.25);
+
+    box-shadow:
+        inset 0 0 30px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(0, 229, 255, 0.05);
+}
+
+
+/* =========================================================
+      FOOTER
+      ========================================================= */
+
+footer {
+    text-align: center;
+
+    color: #3f4758;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.65rem;
+
+    letter-spacing: 0.15em;
+}
+
+
+/* =========================================================
+      SCROLLBAR
+      ========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #05070d;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+
+    background: #202838;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #303b50;
+}
+
+
+/* =========================================================
+      MOBILE
+      ========================================================= */
+
+@media (max-width: 750px) {
+
+    body {
+        padding: 1rem;
+    }
+
+    .tool-1 {
+        grid-template-columns: 1fr;
+    }
+
+    header ul {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+
+    .li-grp {
+        flex-basis: auto;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    header,
+    .tool-1 form,
+    .sales-assistant,
+    .response {
+        padding: 1.1rem;
+    }
+}

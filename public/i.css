@@ -1,0 +1,417 @@
+/* =========================================================
+   FRAMEWORK — AUTH UI
+   Dark Glass / Neon Interface
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #05070d;
+    --panel: rgba(15, 20, 32, 0.72);
+    --panel-light: rgba(255, 255, 255, 0.055);
+
+    --border: rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(255, 255, 255, 0.22);
+
+    --text: #f4f7fb;
+    --muted: #8992a5;
+
+    --cyan: #00e5ff;
+    --purple: #9b5cff;
+    --pink: #ff3cac;
+
+    --radius: 20px;
+    --transition: 0.3s ease;
+}
+
+
+/* =========================================================
+      RESET
+      ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem;
+
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(circle at 15% 20%,
+            rgba(0, 229, 255, 0.12),
+            transparent 30%),
+        radial-gradient(circle at 85% 80%,
+            rgba(155, 92, 255, 0.14),
+            transparent 30%),
+        var(--bg);
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+      AMBIENT BACKGROUND
+      ========================================================= */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::before {
+    background: rgba(0, 229, 255, 0.08);
+    top: -150px;
+    left: -150px;
+}
+
+body::after {
+    background: rgba(155, 92, 255, 0.08);
+    right: -150px;
+    bottom: -150px;
+}
+
+
+/* =========================================================
+      MAIN
+      ========================================================= */
+
+main {
+    width: min(100%, 460px);
+}
+
+
+/* =========================================================
+      FORMS
+      ========================================================= */
+
+.signup-form {
+    display: none;
+}
+
+.login-form,
+.signup-form {
+    position: relative;
+
+    padding: 2.5rem;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    background: var(--panel);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    overflow: hidden;
+
+    animation: formIn 0.7s ease both;
+}
+
+
+/* top neon line */
+
+.login-form::before,
+.signup-form::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 10%;
+
+    width: 80%;
+    height: 1px;
+
+    background: linear-gradient(90deg,
+            transparent,
+            var(--cyan),
+            var(--purple),
+            transparent);
+
+    box-shadow:
+        0 0 15px var(--cyan),
+        0 0 30px var(--purple);
+}
+
+
+/* =========================================================
+      HEADINGS
+      ========================================================= */
+
+h1 {
+    margin-bottom: 2rem;
+
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    line-height: 1.2;
+
+    font-weight: 600;
+    letter-spacing: -0.03em;
+
+    background: linear-gradient(90deg,
+            #ffffff,
+            #aeb8cc);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================================
+      FORM SWITCH SPAN
+      ========================================================= */
+
+.login-form>span,
+.signup-form>span {
+    display: inline-block;
+
+    margin-bottom: 1.8rem;
+
+    padding: 0.45rem 0.8rem;
+
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: 999px;
+
+    color: var(--cyan);
+
+    background: rgba(0, 229, 255, 0.06);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+
+    cursor: pointer;
+
+    transition:
+        background var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
+}
+
+.login-form>span:hover,
+.signup-form>span:hover {
+    background: rgba(0, 229, 255, 0.12);
+
+    box-shadow:
+        0 0 15px rgba(0, 229, 255, 0.15);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+      GROUPS
+      ========================================================= */
+
+.grp {
+    margin-bottom: 1.3rem;
+}
+
+
+/* =========================================================
+      LABELS
+      ========================================================= */
+
+label {
+    display: block;
+
+    margin-bottom: 0.55rem;
+
+    color: var(--muted);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+      INPUTS
+      ========================================================= */
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+
+    padding: 0.9rem 1rem;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    outline: none;
+
+    color: var(--text);
+    background: rgba(0, 0, 0, 0.25);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.9rem;
+
+    transition:
+        border var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: #50596c;
+}
+
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+    border-color: var(--border-hover);
+}
+
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--cyan);
+
+    background: rgba(0, 229, 255, 0.035);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 229, 255, 0.08),
+        0 0 20px rgba(0, 229, 255, 0.08);
+}
+
+
+/* =========================================================
+      SUBMIT BUTTON
+      ========================================================= */
+
+input[type="submit"] {
+    position: relative;
+
+    width: 100%;
+
+    margin-top: 0.7rem;
+    padding: 0.95rem 1rem;
+
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    border-radius: 10px;
+
+    color: #001014;
+
+    background: linear-gradient(135deg,
+            var(--cyan),
+            #66f3ff);
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        filter var(--transition);
+}
+
+
+input[type="submit"]:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 8px 25px rgba(0, 229, 255, 0.2),
+        0 0 30px rgba(0, 229, 255, 0.15);
+}
+
+
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+      FOOTER
+      ========================================================= */
+
+footer {
+    margin-top: 1.5rem !important;
+
+    color: #454d5d;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+
+    letter-spacing: 0.15em;
+}
+
+
+/* =========================================================
+      FORM ANIMATION
+      ========================================================= */
+
+@keyframes formIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+      MOBILE
+      ========================================================= */
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 1rem;
+    }
+
+    .login-form,
+    .signup-form {
+        padding: 1.7rem;
+    }
+
+    h1 {
+        font-size: 1.45rem;
+    }
+}
