@@ -3,8 +3,6 @@
    Dark Glass / Neon Interface
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 :root {
     --bg: #05070d;
     --panel: rgba(15, 20, 32, 0.72);

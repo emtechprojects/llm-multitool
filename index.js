@@ -1,16 +1,15 @@
 import Prompt from './prompt.js';
 import SalesPrompt from './salesPrompt.js';
-import { createDB, dropDB, showAllUsers, addUser, findUser, updateUser, delUser } from "./db_controller.js"; // NEED TO PASS db AS ARGS
 import { GoogleGenAI } from "@google/genai";
 import express from 'express';
-import sqlite from 'sqlite3'
 import dotenv from 'dotenv'
 import path from 'path'
-let sq = sqlite.verbose()
 dotenv.config()
 
 const port = process.env.PORT
-const local = process.env.LOCAL
+const server = process.env.SERVER_URL
+const pwd = process.env.LOGINPW
+
 let loggedIn = false
 
 const App = express()
@@ -18,15 +17,6 @@ App.set('view engine', 'ejs')
 App.set('views', path.join(process.cwd(), '/views'));
 App.use(express.json())
 App.use(express.static(path.join(process.cwd(), "public")))
-
-let sql
-const db = new sq.Database("users.db", sqlite.OPEN_READWRITE, (err) => {
-    if (err) return console.error(err)
-    console.log("Connection to database successfull.")
-})
-showAllUsers(db)
-
-// const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
 // HOME
 App.get('/', function (req, res) {
@@ -39,49 +29,21 @@ App.get('/index', function (req, res) {
 // LOGGED IN
 App.get('/auth-user', function (req, res) {
     if (loggedIn) {
-        res.render(path.join(process.cwd(), '/views/authuser'))
+        res.render(path.join(process.cwd(), '/views/authuser.ejs'))
     } else {
-        res.render(path.join(process.cwd(), '/views/index'))
+        res.render(path.join(process.cwd(), '/views/index.ejs'))
     }
 })
 
 // NEW USER
-App.post('/user-signup', async function (req, res) {
-    let foundName = false
-    let { name, pwd } = await req.body.user
-    sql = `SELECT OID, * FROM users`
-    db.all(sql, [], (err, rows) => {
-        if (err) throw err
-        rows.map(row => {
-            console.log(row)
-            if (row.name == name) return foundName = true
-        })
-        if (foundName) return res.json({ validationError: "User name already exists" })
-        sql = `INSERT INTO users(name, pwd) VALUES(?,?)`
-        db.run(sql, [name, pwd], (err) => {
-            if (err) return console.error(err)
-            return res.json({ success: "User successfully added to database" })
-        })
-    })
-})
-
-// USER LOGIN
-App.post('/user-login', function (req, res) {
-    let { name, pwd } = req.body.user
-    console.log(name,pwd)
-    let foundName = false
-    sql = `SELECT OID, * FROM users`
-    db.all(sql, [], (err, rows) => {
-        if (err) throw err
-        rows.forEach(row => {
-            if (row.name == name && row.pwd == pwd) return foundName = true
-        });
-        if (foundName) {
-            loggedIn = true
-            return res.json({ url: `${local}auth-user` })
-        }
-        return res.json({ validationError: "User name and password dont match!" })
-    })
+App.post('/user-login', async function (req, res) {
+    let PWD = req.body.user.pwd
+    if (PWD === pwd) {
+        loggedIn = true
+        return res.json({ url: `${process.env.SERVER_URL}auth-user` })
+    } else {
+        return res.json({ validationError: "Incorrect Password." })
+    }
 })
 
 // MAKE REQUEST TO GEMINI WITH VARYING PAYLOADS
@@ -128,4 +90,4 @@ App.get('*', function (req, res) {
     res.render(path.join(process.cwd(), '/views/index.ejs'))
 })
 
-App.listen(port, function () { console.log(`click here ${local}`) })
+App.listen(port, function () { console.log(`click here ${server}`) })
