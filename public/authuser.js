@@ -38,10 +38,10 @@ salesAssist.addEventListener('submit', function (ev) {
     const salesArea = ev.target.querySelector('#sales-area')
 
     const obj = {
-        name: salesName.value,
+        part: salesName.value,
         area: salesArea.value
     }
-    if (obj.name == "") {
+    if (obj.part == "") {
         alert('Enter part name')
         salesName.style.borderColor = "red"
     }
@@ -49,8 +49,8 @@ salesAssist.addEventListener('submit', function (ev) {
         alert('Enter area to search')
         salesArea.style.borderColor = "red"
     }
-    if (obj.name && obj.area) {
-        manuID.reset()
+    if (obj.part && obj.area) {
+        ev.target.reset()
         salesName.style.borderColor = "black"
         salesArea.style.borderColor = "black"
         fetch('/send-form', {
@@ -66,7 +66,7 @@ salesAssist.addEventListener('submit', function (ev) {
                 return await Promise.reject(json)
             })
             .then(({ Response }) => {
-                textarea.textContent += `Part Name:\n${obj.name}\nPart Name:\n${obj.area}\n\n`
+                textarea.textContent += `Part Name:\n${obj.part}\nArea:\n${obj.area}\n\n`
                 textarea.textContent += `${Response}\n\n`
             })
             .catch(e => {

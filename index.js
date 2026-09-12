@@ -72,13 +72,13 @@ App.post('/send-form', async function (req, res) {
         return res.json({ Response: response.text });
     };
     if (req.body.salesAssistant) {
-        const {name, id} = req.body.salesAssistant
+        const {part, area} = req.body.salesAssistant
         const GEMINI_API_KEY = process.env.GEMINI_API_KEY3
         const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY});
         const response = await ai.models.generateContent({
             model: "gemini-3.1-flash-lite",
             //PART NAME
-            contents: SalesPrompt(name, id),
+            contents: SalesPrompt(part, area),
         });
         return res.json({ Response: response.text });
     };
@@ -90,4 +90,4 @@ App.get('*', function (req, res) {
     res.render(path.join(process.cwd(), '/views/index.ejs'))
 })
 
-App.listen(port, function () { console.log(`click here ${server}`) })
+App.listen(port, ()=>console.log(server))
