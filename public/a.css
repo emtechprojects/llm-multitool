@@ -15,7 +15,7 @@
     --border-hover: rgba(0, 229, 255, 0.35);
 
     --text: #f4f7fb;
-    --muted: #7e8799;
+    --muted: #adb3bf;
 
     --cyan: #00e5ff;
     --purple: #9b5cff;
@@ -49,6 +49,7 @@ body {
 
     color: var(--text);
 
+    font-size: 22px;
     font-family: "Inter", sans-serif;
 
     background:
@@ -88,8 +89,9 @@ header {
 header h2 {
     margin: 0 0 1rem;
 
-    font-size: 1.5rem;
+    font-size: 1.2em;
     font-weight: 600;
+    text-align: center;
 }
 
 
@@ -102,7 +104,7 @@ header>span {
     color: var(--cyan);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.7rem;
+    font-size: 0.8em;
 
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -129,7 +131,7 @@ header ul {
 .li-grp {
     flex: 1 1 300px;
 
-    padding: 1rem;
+    padding: 0.5rem;
 
     border-left: 2px solid rgba(0, 229, 255, 0.25);
 
@@ -143,7 +145,7 @@ header ul {
     color: var(--muted);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.75rem;
+    font-size: 0.8em;
 }
 
 
@@ -164,7 +166,7 @@ main {
 .spans {
     min-height: 80px;
     position: absolute;
-    top: -25px;
+    top: -33px;
     right: 3px;
 }
 
@@ -176,7 +178,7 @@ main {
     color: var(--cyan);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.75rem;
+    font-size: 0.8em;
 }
 
 
@@ -222,7 +224,7 @@ main {
 .sales-assistant {
     position: relative;
 
-    padding: 1.5rem;
+    padding: 1rem;
 
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -264,7 +266,7 @@ main {
     color: var(--text);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.8rem;
+    font-size: 1em;
     font-weight: 600;
 
     letter-spacing: 0.05em;
@@ -275,7 +277,12 @@ main {
     color: var(--muted);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.7rem;
+    font-size: 0.9em;
+}
+
+h3 {
+    font-size: 1.3em;
+    text-align: center;
 }
 
 
@@ -296,7 +303,7 @@ main {
     color: var(--muted);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.7rem;
+    font-size: 0.9em;
 }
 
 
@@ -319,7 +326,7 @@ main {
     background: rgba(0, 0, 0, 0.25);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.78rem;
+    font-size: 0.9em;
 
     transition:
         border 0.3s ease,
@@ -346,7 +353,8 @@ main {
       ========================================================= */
 
 #submit {
-    width: 100%;
+    width: 90%;
+    margin: 5%;
 
     padding: 0.8rem;
 
@@ -360,7 +368,7 @@ main {
             #72f5ff);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.72rem;
+    font-size: 0.85em;
     font-weight: 700;
 
     text-transform: uppercase;
@@ -427,7 +435,7 @@ hr {
     border: 1px solid var(--border);
     border-radius: var(--radius);
 
-    background: rgba(8, 12, 20, 0.8);
+    background: rgba(23, 30, 45, 0.8);
 
     box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.3);
@@ -442,7 +450,7 @@ hr {
     color: var(--cyan);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.75rem;
+    font-size: 0.9em;
     font-weight: 600;
 
     text-transform: uppercase;
@@ -467,7 +475,7 @@ hr {
     background: rgba(255, 60, 172, 0.05);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.65rem;
+    font-size: 0.75em;
 
     cursor: pointer;
 
@@ -496,7 +504,7 @@ hr {
     display: block;
 
     width: 100%;
-    min-height: 220px;
+    min-height: 340px;
 
     margin-top: 0.5rem;
 
@@ -513,11 +521,11 @@ hr {
 
     background:
         linear-gradient(rgba(0, 229, 255, 0.015),
-            rgba(155, 92, 255, 0.015)),
-        #03050a;
+            rgba(155, 92, 255, 0.015),
+            #03050a);
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.75rem;
+    font-size: 0.85em;
     line-height: 1.7;
 
     box-shadow:
@@ -548,7 +556,7 @@ footer {
     color: #3f4758;
 
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.65rem;
+    font-size: 0.65em;
 
     letter-spacing: 0.15em;
 }
@@ -603,6 +611,15 @@ footer {
 
 
 @media (max-width: 450px) {
+
+    body {
+        font-size: 20px;
+    }
+
+    .span-1,
+    .span-2 {
+        font-size: 0.7em;
+    }
 
     header,
     .tool-1 form,
